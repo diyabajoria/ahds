@@ -78,9 +78,42 @@ export default function ComparisonPage() {
                 <YAxis type="number" dataKey="y" name="Deadline miss ratio" unit="%" stroke="#425065" tick={{ fontSize: 11 }}
                   label={{ value: 'Deadline miss ratio (%)', angle: -90, position: 'insideLeft', fill: '#425065', fontSize: 11 }} />
                 <ZAxis dataKey="z" range={[80, 200]} />
-                <Tooltip cursor={{ strokeDasharray: '3 3' }} contentStyle={{ background: '#0f151d', border: '1px solid #202b3a', fontSize: 12 }}
-                  formatter={(v: any, n: any) => [v, n]}
-                  labelFormatter={() => ''} />
+                <Tooltip
+  cursor={{ strokeDasharray: '3 3' }}
+  contentStyle={{
+    background: '#0f151d',
+    border: '1px solid #202b3a',
+    fontSize: 12,
+  }}
+  content={({ active, payload }) => {
+    if (!active || !payload || payload.length === 0) return null
+
+    const d = payload[0].payload
+
+    return (
+      <div
+        style={{
+          background: '#0f151d',
+          border: '1px solid #202b3a',
+          padding: '10px 12px',
+          borderRadius: '4px',
+        }}
+      >
+        <div style={{ color: '#ff9e2c', fontWeight: 600, marginBottom: 6 }}>
+          {d.name}
+        </div>
+
+        <div style={{ color: '#cbd5e1' }}>
+          DB p99: {d.x.toFixed(1)} ms
+        </div>
+
+        <div style={{ color: '#cbd5e1' }}>
+          Deadline miss ratio: {d.y.toFixed(1)}%
+        </div>
+      </div>
+    )
+  }}
+/>
                 <Legend wrapperStyle={{ fontSize: 12 }} />
                 {scatterData.map((d) => (
                   <Scatter key={d.name} name={d.name} data={[d]}

@@ -62,18 +62,6 @@ export default function AboutPage() {
           anything. That's exactly what the HDD-vs-SSD preset is built to show.
         </p>
       </Panel>
-
-      <Panel title="Honest limitations">
-        <ul className="text-[14px] text-slate-300 leading-relaxed list-disc list-inside space-y-1">
-          <li>No real hardware — this is a discrete-event simulation, not a kernel patch or a driver.</li>
-          <li>No on-disk cache modelling, no NCQ, no filesystem layer.</li>
-          <li>Linear cylinder-to-LBA mapping (real disks are far messier).</li>
-          <li>Rotational latency is averaged, not modelled as an actual platter position.</li>
-          <li>A result set where HYBRID wins every single metric on every workload would be a sign
-            of a bug or a rigged workload — the Comparison page is built to show it losing where it
-            genuinely does.</li>
-        </ul>
-      </Panel>
     </div>
   )
 }
