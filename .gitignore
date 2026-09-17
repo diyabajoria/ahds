@@ -1,0 +1,21 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Environment / secrets
+.env
+.env.*
+
+# Node
+node_modules/
+
+# macOS
+.DS_Store
+
+# Build files
+dist/
+build/
+.next/
+frontend/tsconfig.tsbuildinfo
